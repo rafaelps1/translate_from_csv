@@ -1,0 +1,28 @@
+
+'''
+#text = "when is this game going to be released?? I can hardly wait for this game and now another disappointment,why don't they be truthful and say when for sure so I can get on with some other game..just waiting with baited-breath, and how long will we have to wait for another after this one,, they need to get with it before I outgrow my need for Laura and I'm only 75 , can't wait much longer, if you know what I mean!!!"
+text1 = "BEAUTIFUL ALASKAN SNOW SCENE Great Alaskan scenes,,,,, well photographed....cute film on a rainy or snowy day...at times scenes too drawn out...but then it would have been a real short film...."
+text1 = re.sub(r",{2,}", ',', text1)
+translator = Translator()
+text = translator.translate(text1, dest='pt').text
+print text
+'''
+
+"""
+Traceback (most recent call last):
+  File "translete_dataset.py", line 74, in <module>
+    text = translator.translate(text, dest='pt').text
+  File "/usr/local/lib/python2.7/dist-packages/googletrans/client.py", line 123, in translate
+    data = self._translate(text, dest, src)
+  File "/usr/local/lib/python2.7/dist-packages/googletrans/client.py", line 75, in _translate
+    data = utils.format_json(r.text)
+  File "/usr/local/lib/python2.7/dist-packages/googletrans/utils.py", line 51, in format_json
+    converted = json.loads(text)
+  File "/usr/lib/python2.7/json/__init__.py", line 339, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python2.7/json/decoder.py", line 364, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python2.7/json/decoder.py", line 382, in raw_decode
+    raise ValueError("No JSON object could be decoded")
+ValueError: No JSON object could be decoded
+"""
