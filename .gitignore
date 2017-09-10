@@ -1,5 +1,9 @@
+#Binary
+*.pyc
+
 # Dumps of App
-translations/*
+datas_transletion/*
+cp_datas_trasnletion/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

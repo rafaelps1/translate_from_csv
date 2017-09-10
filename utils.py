@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 """
 Installation
      pip install googletrans
@@ -40,28 +39,29 @@ def translete_data_from(datas_path, name_seved_datas='translete_test.csv',
     indexs = []
     sentences = []
     print 'Init...'
-    for i, v in enumerate(titles, start=0):
+    for i, v in enumerate(titles, start=2951000):
           origin = 'Error index'
           try:
             title = titles[i]
             comment = comments[i]
             origin = text = title + ' ' + comment
-            text = re.sub(r",{2,}", ',', text)  
+            text = re.sub(r",{2,}", ',', text)
+            text = re.sub(r"\"+", '', text)
             text = translator.translate(text, dest='pt').text
             train[1][i] =  text
-            if i % 10 == 0:
+            if i % 2000 == 0:
                 train.to_csv(name_seved_datas, index=False, header=False)
                 print 'Saved - {}'.format(i)
           except:
             counters += 1  
             indexs.append(i)
             sentences.append(origin)
-            dic_excpt = {indexs: indexs, sentences: sentences, counters: counters}
+            dic_excpt = (indexs, sentences, counters)
             dump_object(dic_excpt, dump_sentence_not_translation)
             print '\n{}: {}|'.format(i, origin)
-            raise
+            pass
 
     train.to_csv(name_seved_datas, index=False, header=False)
-    dic = {indexs: indexs, sentences: sentences, counters: counters}
+    dic = (indexs, sentences, counters)
     dump_object(dic, dump_sentence_not_translation)
     print 'Ended'
